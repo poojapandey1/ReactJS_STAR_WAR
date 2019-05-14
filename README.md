@@ -1,15 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## In this project the following topics coverd.
- 1. Create react app using “create-react-app”.
- 2. Used bootstrap styling.
- 3. Comments
+## In this project following points are coverd.
+ 1. Created react app using “create-react-app”.
+ 2. Used bootstrap css for styling.
+ 3. Used proper comments for functions and classes.
  4. Used Axiom for service call.(3rd party)
- 5. Used @Sentry/browser fro Logging.(3rd party) : https://sentry.io
+ 5. Used @Sentry/browser for Logging error over server.(3rd party) : https://sentry.io
  6. Used react router v3 for routing.
  7. Used Local storage for storing user.
  8. Implemented infinite scrolling.
- 9. Implemented Unit testing using Jest.(3rd party)
+ 9. Implemented basic Unit testing using Jest.
  10. Error Handling.
  11. Used HTML5 Vedio tag.
  12. 404 page not found included
