@@ -70,7 +70,6 @@ class SearchSreen extends Component {
     clearInterval(this.timer);
     this.scrollListner = window.addEventListener('scroll', e => {
       this.handelScroll(e);
-      console.log('handelScroll added');
     });
     this.getWholePlanetList();
   }
@@ -79,7 +78,6 @@ class SearchSreen extends Component {
    * Method to handle the scroll over the page.
    */
   handelScroll = () => {
-    console.log('handelScroll', this.state.nextPageUrl);
     const { scrolling } = this.state;
     if (scrolling) return;
     const lastLi = document.querySelector('div > div:last-child');
@@ -126,7 +124,6 @@ class SearchSreen extends Component {
    */
   validateForSearch() {
     const { timeCount, apiCallCount } = this.state;
-    console.log(LocalStorage.getUser(), Constant.PRIME_USER);
     if (LocalStorage.getUser() !== Constant.PRIME_USER) {
       if (timeCount > Constant.ZERO && apiCallCount < Constant.MAX_API_CALL) {
         return true;
