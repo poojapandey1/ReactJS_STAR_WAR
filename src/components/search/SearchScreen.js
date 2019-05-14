@@ -207,14 +207,13 @@ class SearchSreen extends Component {
         successCall: data => {
           this.setState({
             results: data.results,
-            nextPageUrl: data.next,
             page: 1,
             loading: false
           });
         },
         errorCall: error => {
           this.setState({
-            loading: true,
+            loading: false,
             results: [...this.state.wholePlanetList]
           });
         }
@@ -222,7 +221,8 @@ class SearchSreen extends Component {
     } else {
       this.setState({
         results: this.state.wholePlanetList,
-        page: 1
+        page: 1,
+        loading: false
       });
     }
   }
@@ -261,9 +261,12 @@ class SearchSreen extends Component {
    * @param {*} nextState
    */
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.results === nextState.results) return false;
-    return true;
+    const { results, showPopup } = this.state;
+    if (results !== nextState.results || showPopup !== nextState.showPopup)
+      return true;
+    return false;
   }
+
   /**
    * Method to render the UI for
    * Search screen.
