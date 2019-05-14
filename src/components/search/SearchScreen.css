@@ -1,0 +1,94 @@
+.SearchScreenBody {
+  background-size: cover;
+  height: 100%;
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  /* color: #8b0606; */
+}
+
+body > #root > div {
+  height: 100vh;
+}
+
+.NavBarColor {
+  background-color: rgba(17, 10, 10, 0.8);
+  direction: flex;
+  height: 10%;
+}
+
+.Welcome {
+  justify-content: 'center';
+  align-items: 'center';
+  color: rgb(236, 3, 93);
+  flex: 1;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.SearchBar,
+.SearchResult {
+  width: 65%;
+}
+
+.SearchBar {
+  flex: 4;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.btn {
+  margin-left: 12%;
+}
+.spinner-border {
+  width: 5rem;
+  height: 5rem;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/** for vedio **/
+header {
+  position: relative;
+  background-color: black;
+  height: 75vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 1;
+  z-index: 1;
+}

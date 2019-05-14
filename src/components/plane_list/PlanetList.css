@@ -1,0 +1,40 @@
+.PlanetList {
+  height: 50px;
+  background-color: rgba(248, 248, 248, 0.8);
+  margin-top: 15px;
+  width: 100%;
+  color: black;
+  border-radius: 5px;
+}
+
+.List {
+  overflow: auto;
+  height: auto;
+}
+
+.TextPadding {
+  padding-left: 2%;
+}
+
+.float-right {
+  padding-right: 2%;
+}
+
+.Main {
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
