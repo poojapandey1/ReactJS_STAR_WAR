@@ -157,6 +157,7 @@ class Login extends Component {
           id="username"
           className="fadeIn second"
           name="username"
+          maxLength="30"
           placeholder="Enter Username"
           value={this.state.username}
           onChange={this.handleChange}
@@ -166,6 +167,7 @@ class Login extends Component {
           id="password"
           className="fadeIn third"
           name="password"
+          maxLength="20"
           placeholder="Enter Password"
           value={this.state.password}
           onChange={this.handleChange}
