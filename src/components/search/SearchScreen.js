@@ -308,7 +308,7 @@ class SearchSreen extends Component {
           type="search"
           placeholder="Search planet"
           minLength={2}
-          debounceTimeout={1000}
+          debounceTimeout={500}
           onChange={this.handleInputChange}
           disabled={this.state.searchDisable}
         />
