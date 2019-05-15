@@ -296,7 +296,7 @@ class SearchSreen extends Component {
   setupNavigationBar() {
     return (
       <nav className="navbar NavBarColor">
-        <h3 className="Welcome ">{LocalStorage.getUser()}</h3>
+        <h4 className="Welcome ">{LocalStorage.getUser()}</h4>
         <input
           className="form-control SearchBar mr-sm-2"
           type="search"
