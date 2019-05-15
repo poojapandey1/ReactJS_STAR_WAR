@@ -11,6 +11,10 @@ import * as Constant from '../../utils/Constant';
 import * as Sentry from '@sentry/browser';
 import video from '../../assets/images/EarthSun-s.mp4';
 import NotFound from '../../assets/images/Not-found.png';
+import icon from '../../assets/images/startwar_icon1.png';
+import Loader from '../../assets/images/Loader3.gif';
+import { DebounceInput } from 'react-debounce-input';
+
 
 /**
  * Search Screen component which enables to
@@ -297,11 +301,14 @@ class SearchSreen extends Component {
   setupNavigationBar() {
     return (
       <nav className="navbar NavBarColor">
+        <img src={icon} className="imgIcon" alt="icon" />
         <h4 className="Welcome ">{LocalStorage.getUser()}</h4>
-        <input
+        <DebounceInput
           className="form-control SearchBar mr-sm-2"
           type="search"
           placeholder="Search planet"
+          minLength={2}
+          debounceTimeout={1000}
           onChange={this.handleInputChange}
           disabled={this.state.searchDisable}
         />
@@ -330,9 +337,11 @@ class SearchSreen extends Component {
         <br />
         {this.state.loading ? (
           <div className="d-flex justify-content-center">
-            <div className="spinner-border text-danger" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
+            <img
+              src={Loader}
+              alt="loader"
+              className="LoaderImage justify-self-center"
+            />
           </div>
         ) : this.state.results.length === 0 ? (
           <div className="d-flex justify-content-center">
