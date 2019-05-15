@@ -13,6 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  10. Error Handling.
  11. Used HTML5 Vedio tag.
  12. 404 page not found included
+ 13. Used Debounc for the delay in search api (npm install --save react react-debounce-input);
 
 ## Available Scripts
 
