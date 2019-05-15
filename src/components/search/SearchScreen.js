@@ -156,7 +156,6 @@ class SearchSreen extends Component {
       {
         query: e.target.value,
         isTimerRunning: true,
-        apiCallCount: this.state.apiCallCount + 1
       },
       () => {
         if (this.validateForSearch()) {
@@ -205,7 +204,9 @@ class SearchSreen extends Component {
           this.setState({
             results: data.results,
             page: 1,
-            loading: false
+            loading: false,
+            apiCallCount: this.state.apiCallCount + 1
+
           });
         },
         errorCall: error => {
