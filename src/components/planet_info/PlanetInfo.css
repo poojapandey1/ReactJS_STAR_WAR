@@ -29,10 +29,10 @@
 }
 
 .Image {
-  width: 85%;
-  height: 85%;
+  width: 82%;
+  height: 86%;
   border-radius: 2%;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .PlanetImage {
@@ -40,7 +40,7 @@
   flex: 1;
   align-content: center;
   justify-content: center;
-  padding: 5px; 
+  padding: 5px;
 }
 
 .PlanetDetail {
