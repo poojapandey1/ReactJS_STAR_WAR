@@ -43,9 +43,17 @@ class SearchSreen extends Component {
    * and restricting the further search
    * for specified interval of time.
    */
-  tick() {
+  tick() 
     if (this.state.timeCount === 0 && this.state.searchDisable === true) {
-      this.setState({ timeCount: 60, searchDisable: false, apiCallCount: 0 });
+      this.setState({
+        timeCount: 60,
+        searchDisable: false,
+        apiCallCount: 0,
+        results:
+          this.state.query.length < 2
+            ? this.state.wholePlanetList
+            : this.state.results
+      });
       alert(ErrorConstants.ERROR_START_SEARCH);
     }
     this.setState({ timeCount: this.state.timeCount - 1 });
@@ -308,7 +316,7 @@ class SearchSreen extends Component {
           type="search"
           placeholder="Search planet"
           minLength={2}
-          debounceTimeout={500}
+          debounceTimeout={400}
           onChange={this.handleInputChange}
           disabled={this.state.searchDisable}
         />
