@@ -9,7 +9,7 @@ import '../../components/search/SearchScreen.css';
 import * as ErrorConstants from '../../utils/ErrorConstants';
 import * as Constant from '../../utils/Constant';
 import * as Sentry from '@sentry/browser';
-import video from '../../assets/images/EarthSun-s.mp4';
+import video from '../../assets/images/EarthSun.mp4';
 import NotFound from '../../assets/images/Not-found.png';
 import icon from '../../assets/images/startwar_icon1.png';
 import Loader from '../../assets/images/Loader3.gif';
@@ -53,6 +53,7 @@ class SearchSreen extends Component {
             ? this.state.wholePlanetList
             : this.state.results
       });
+      this.fetchPlanetList();
       alert(ErrorConstants.ERROR_START_SEARCH);
     }
     this.setState({ timeCount: this.state.timeCount - 1 });
@@ -104,6 +105,7 @@ class SearchSreen extends Component {
    * from the API.
    */
   getWholePlanetList() {
+    console.log('getWholePlanetList');
     this.setState({
       loading: this.state.page === 1 ? true : false,
       scrolling: true,
@@ -165,8 +167,8 @@ class SearchSreen extends Component {
     }
     this.setState(
       {
-        isTimerRunning: true,
-        query: e.target.value
+        query: e.target.value,
+        isTimerRunning: true
       },
       () => {
         if (this.validateForSearch()) {
@@ -195,6 +197,7 @@ class SearchSreen extends Component {
    * when required.
    */
   hidePlanetInfo = () => {
+    console.log('hidePlanetInfo');
     this.setState({
       showPopup: false
     });
@@ -206,32 +209,25 @@ class SearchSreen extends Component {
    */
   fetchPlanetList() {
     const { query } = this.state;
-    if (query.length > 2) {
-      const url = Constant.PLANET + query;
-      Webservice({
-        url: url,
-        successCall: data => {
-          this.setState({
-            results: data.results,
-            page: 1,
-            loading: false,
-            apiCallCount: this.state.apiCallCount + 1
-          });
-        },
-        errorCall: error => {
-          this.setState({
-            loading: false,
-            results: [...this.state.wholePlanetList]
-          });
-        }
-      });
-    } else {
-      this.setState({
-        results: this.state.wholePlanetList,
-        page: 1,
-        loading: false
-      });
-    }
+    const url = Constant.PLANET + query;
+    Webservice({
+      url: url,
+      successCall: data => {
+        this.setState({
+          results: data.results,
+          page: 1,
+          loading: false,
+          apiCallCount: this.state.apiCallCount + 1
+        });
+        console.log('successCall');
+      },
+      errorCall: error => {
+        this.setState({
+          loading: false,
+          results: [...this.state.wholePlanetList]
+        });
+      }
+    });
   }
 
   /**
@@ -281,8 +277,8 @@ class SearchSreen extends Component {
           <source src={video} type="video/mp4" />
         </video>
         {this.setupNavigationBar()}
-        {popup}
         {this.setUpSearchList()}
+        {popup}
       </div>
     );
   }
@@ -295,12 +291,13 @@ class SearchSreen extends Component {
       <nav className="navbar NavBarColor">
         <img src={icon} className="imgIcon" alt="icon" />
         <h4 className="Welcome ">{LocalStorage.getUser()}</h4>
+
         <DebounceInput
           className="form-control SearchBar mr-sm-2"
           type="search"
           placeholder="Search planet"
-          minLength={2}
-          debounceTimeout={300}
+          minLength={0}
+          debounceTimeout={1000}
           onChange={this.handleInputChange}
           disabled={this.state.searchDisable}
         />
@@ -321,6 +318,7 @@ class SearchSreen extends Component {
   setUpSearchList() {
     return (
       <div className="SearchResult container">
+        {/* {console.log('this.state.results', this.state.results)} */}
         <PlanetList
           planetList={this.state.results}
           showPlanetInfo={this.showPlanetInfo}
@@ -328,11 +326,14 @@ class SearchSreen extends Component {
         <br />
         {this.state.loading ? (
           <div className="d-flex justify-content-center">
+            {/* <div className="spinner-border text-danger" role="status"> */}
+            {/* <span className="sr-only">Loading...</span> */}
             <img
               src={Loader}
               alt="loader"
               className="LoaderImage justify-self-center"
             />
+            {/* </div> */}
           </div>
         ) : this.state.results.length === 0 ? (
           <div className="d-flex justify-content-center">
