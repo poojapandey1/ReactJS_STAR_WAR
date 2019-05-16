@@ -15,7 +15,6 @@ import icon from '../../assets/images/startwar_icon1.png';
 import Loader from '../../assets/images/Loader3.gif';
 import { DebounceInput } from 'react-debounce-input';
 
-
 /**
  * Search Screen component which enables to
  * serach for specified planet.
@@ -43,7 +42,7 @@ class SearchSreen extends Component {
    * and restricting the further search
    * for specified interval of time.
    */
-  tick() 
+  tick() {
     if (this.state.timeCount === 0 && this.state.searchDisable === true) {
       this.setState({
         timeCount: 60,
@@ -166,8 +165,8 @@ class SearchSreen extends Component {
     }
     this.setState(
       {
-        query: e.target.value,
         isTimerRunning: true,
+        query: e.target.value
       },
       () => {
         if (this.validateForSearch()) {
@@ -196,7 +195,6 @@ class SearchSreen extends Component {
    * when required.
    */
   hidePlanetInfo = () => {
-    console.log('hidePlanetInfo');
     this.setState({
       showPopup: false
     });
@@ -218,7 +216,6 @@ class SearchSreen extends Component {
             page: 1,
             loading: false,
             apiCallCount: this.state.apiCallCount + 1
-
           });
         },
         errorCall: error => {
@@ -265,19 +262,6 @@ class SearchSreen extends Component {
   }
 
   /**
-   * Method to update UI according to state change.
-   * By default it returns true.
-   * @param {*} nextProps
-   * @param {*} nextState
-   */
-  shouldComponentUpdate(nextProps, nextState) {
-    const { results, showPopup } = this.state;
-    if (results !== nextState.results || showPopup !== nextState.showPopup)
-      return true;
-    return false;
-  }
-
-  /**
    * Method to render the UI for
    * Search screen.
    */
@@ -316,7 +300,7 @@ class SearchSreen extends Component {
           type="search"
           placeholder="Search planet"
           minLength={2}
-          debounceTimeout={400}
+          debounceTimeout={300}
           onChange={this.handleInputChange}
           disabled={this.state.searchDisable}
         />
@@ -337,7 +321,6 @@ class SearchSreen extends Component {
   setUpSearchList() {
     return (
       <div className="SearchResult container">
-        {console.log('this.state.results', this.state.results)}
         <PlanetList
           planetList={this.state.results}
           showPlanetInfo={this.showPlanetInfo}
